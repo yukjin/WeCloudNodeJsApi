@@ -6,7 +6,9 @@
   "repository": {
     "url": ""
   },
-  "dependencies": {},
+  "dependencies": {
+    "request": "^2.47.0"
+  },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
