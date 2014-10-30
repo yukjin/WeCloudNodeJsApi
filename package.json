@@ -1,0 +1,15 @@
+{
+  "author": "luzhen <luzhen@sungymobile.com> (luzhen.sinaapp.com)",
+  "name": "GopushApi",
+  "description": "GopushApi SDK",
+  "version": "0.0.1",
+  "repository": {
+    "url": ""
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
