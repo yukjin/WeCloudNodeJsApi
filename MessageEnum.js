@@ -12,11 +12,8 @@ var warmType={'OPEN_BLN':1,'OPEN_BEL':2,'OPEN_VIB':3};
 //countries
 var countries={'US':'US', 'UK':'UK', 'AU':'AU', 'CA':'CA', 'RU':'RU', 'DE':'DE', 'SG':'SG', 'FR':'FR', 'HK':'HK', 'IT':'IT', 'TH':'TH', 'NO':'NO', 'MY':'MY', 'KR':'KR', 'SE':'SE', 'ID':'ID', 'SA':'SA', 'ES':'ES', 'DK':'DK', 'PH':'PH', 'NL':'NL', 'IL':'IL', 'JP':'JP', 'NZ':'NZ', 'BR':'BR', 'BE':'BE', 'CH':'CH', 'CZ':'CZ', 'ZA':'ZA', 'CN':'CN','TW':'TW','IN':'IN','PK':'PK','NG':'NG','MX':'MX','VN':'VN','IR':'IR','UA':'UA','CL':'CL','PT':'PT','TR':'TR','GR':'GR','FI':'FI','CO':'CO','HU':'HU','EG':'EG','IE':'IE','HR':'HR','RO':'RO','OTHER':'OT'};
 //tags
-var tags={}
-var temp=['ONLINE_SHOPPING','VIDEO','GAME','SAFETY','PASSENGER','TECHNIQUE','TECHNOLOGY','STUDENT','FINANCE','JOURNEY','CARTOON','_80S','_90S','_00S','NOVEL','INDOORSMAN','INDOORSWOMAN'];
-for (var tag in temp){
-    tags[temp[tag]]=parseInt(tag)+16;
-}
+var tags={'ONLINE_SHOPPING':16,'VIDEO':17,'GAME':18,'STUDENT':23,'JOURNEY':25,'CARTOON':26,'NOVEL':30,'SPORTS':33,'SOCIAL_NET':34,'NEWS_READING':35,'POTENTIAL_PAYER':66,'POTENTIAL_LOST_USER':67,'NEW_USER':68,'ACTIVE_USER':69};
+
 //netTypes
 var netTypes={'GPRS':'GPRS', 'GSM':'GSM', '_3G':'3G', '_4G':'4G', 'WIFI':'WIFI','EDGE':'EDGE','HSPA':'HSPA','HSUPA':'HSUPA','HSPAP':'HSPAP'};
 var platforms={'ANDROID':'1','IOS_DEV':'2A','IOS_PRO':'2B'};

@@ -10,21 +10,21 @@ var READ_TIMEOUT = 30 * 1000;
 var WECLOUD_APPKEY_PATTERNS = /^[a-zA-Z0-9]{24}/;
 var WECLOUD_MASTER_SECRET_PATTERNS = /^[a-zA-Z0-9]{32}/;
 
-exports.instance = function(appKey, masterSecret, retryTimes) {
-    return new MessageClient(appKey, masterSecret, retryTimes);
+exports.instance = function(option) {
+    return new MessageClient(option.appkey, option.masterSecret, option.retryTimes);
 };
-function MessageClient(appKey, masterSecret, retryTimes) {
-    if (!appKey || !masterSecret) {
+function MessageClient(appkey, masterSecret, retryTimes) {
+    if (!appkey || !masterSecret) {
         throw MessageError
             .InvalidArgumentError('appKey and masterSecret are both required.');
     }
 
-    if (typeof appKey !== 'string' || typeof masterSecret !== 'string'
-        || !WECLOUD_APPKEY_PATTERNS.test(appKey) || !WECLOUD_MASTER_SECRET_PATTERNS.test(masterSecret)) {
+    if (typeof appkey !== 'string' || typeof masterSecret !== 'string'
+        || !WECLOUD_APPKEY_PATTERNS.test(appkey) || !WECLOUD_MASTER_SECRET_PATTERNS.test(masterSecret)) {
         throw new MessageError.InvalidArgumentError(
-                'appKey and masterSecret format is incorrect. ');
+                'appkey and masterSecret format is incorrect. ');
     }
-    this.appkey = appKey;
+    this.appkey = appkey;
     this.masterSecret = masterSecret;
     if (retryTimes) {
         if (typeof retryTimes != 'number') {
@@ -35,26 +35,23 @@ function MessageClient(appKey, masterSecret, retryTimes) {
         this.retryTimes = DEFAULT_MAX_RETRY_TIMES;
     }
 
+    this.sendAll=function(message, callback) {
+        message.setReceiveType('1');
+        message=JSON.stringify(message);
+        this.send(message,callback);
+    };
 
     this.sendByDimensions=function(message, callback) {
         message.setReceiveType('2');
-        message=JSON.stringify(message.message);
+        message=JSON.stringify(message);
         this.send(message,callback);
-    }
+    };
 
     this.sendByTokens=function(message, callback) {
         message.setReceiveType('3');
-        message=JSON.stringify(message.message);
+        message=JSON.stringify(message);
         this.send(message,callback);
-    }
-
-    this.sendAll=function(message, callback) {
-        message.setReceiveType('1');
-        message=JSON.stringify(message.message);
-        console.log(this.masterSecret);
-        console.log(this.appkey);
-        this.send(message,callback);
-    }
+    };
 
     this.send=function(message,callback){
         var header = {
@@ -64,7 +61,7 @@ function MessageClient(appKey, masterSecret, retryTimes) {
         };
         return _request(MESSAGE_API_URL, 'encoding_type=0&master_secret='+this.masterSecret+'&appkey='+this.appkey+'&message='+message, header, {
         }, 'POST', 1, this.retryTimes, callback);
-    }
+    };
 
     _request=function(url, body, headers, auth, method, times, maxTryTimes,
                                     callback) {
@@ -98,10 +95,8 @@ function MessageClient(appKey, masterSecret, retryTimes) {
             }
             if (res.statusCode == 200) {
                 if (body.length != 0) {
-                    console.log("response : " + body)
                     return callback(null, eval('(' + body + ')'));
                 } else {
-                    console.log("response : " + body)
                     return callback(null, 200);
                 }
             } else {

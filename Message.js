@@ -1,7 +1,7 @@
 /**
  * Created by luzhen on 14-9-24.
  */
-    var ENUM=require('./MessageEnum');
+
 var message={
     'message_type':'2',
     'message_title':'',
@@ -24,100 +24,82 @@ var message={
     'dimension5':'',
     'platform':''
 };
-function setMessageTitle(title){
-    message.message_title=title;
+message.setMessageTitle=function(title){
+    this.message_title=title;
     return this;
-}
+};
 
-function setMessageContent(content){
-    message.message_content=content;
+message.setMessageContent=function(content){
+    this.message_content=content;
     return this;
-}
-function setMessageType(messageType) {
-    message.message_type=messageType;
+};
+message.setMessageType=function(messageType) {
+    this.message_type=messageType;
     return this;
-}
-function setSendType(sendType){
-    message.send_type=sendType;
+};
+message.setSendType=function(sendType){
+    this.send_type=sendType;
     return this;
-}
-function setMessageAction(messageAction){
-    message.message_action=messageAction;
+};
+message.setMessageAction=function(messageAction){
+    this.message_action=messageAction;
     return this;
-}
-function setActionParam(actionParam){
-    message.action_param=actionParam;
+};
+message.setActionParam=function(actionParam){
+    this.action_param=actionParam;
     return this;
-}
-function setSendTime(sendTime){
-    message.send_time=sendTime;
+};
+message.setSendTime=function(sendTime){
+    this.send_time=sendTime;
     return this;
-}
-function setRemandTime(remandTime){
-    message.remand_time=remandTime;
+};
+message.setRemandTime=function(remandTime){
+    this.remand_time=remandTime;
     return this;
-}
-function setMessageStyle(styleNum){
-    message.message_style=styleNum;
+};
+message.setMessageStyle=function(styleNum){
+    this.message_style=styleNum;
     return this;
-}
-function setMessageUrl(messageUrl){
-    message.message_url=messageUrl;
+};
+message.setMessageUrl=function(messageUrl){
+    this.message_url=messageUrl;
     return this;
-}
-function setWarmType(){
-    message.warm_type=Array.prototype.join.call(arguments, ',');
+};
+message.setWarmType=function(){
+    this.warm_type=Array.prototype.join.call(arguments, ',');
     return this;
-}
-function setTokens(){
-    message.token_list=Array.prototype.join.call(arguments, ',');
+};
+message.setTokens=function(){
+    this.token_list=Array.prototype.join.call(arguments, ',');
     return this;
-}
-function setVersions(){
-    message.dimension5=Array.prototype.join.call(arguments, ',');
+};
+message.setVersions=function(){
+    this.dimension5=Array.prototype.join.call(arguments, ',');
     return this;
-}
-function setChannels(){
-    message.dimension4=Array.prototype.join.call(arguments, ',');
+};
+message.setChannels=function(){
+    this.dimension4=Array.prototype.join.call(arguments, ',');
     return this;
-}
-function setNetTypes(){
-    message.dimension3=Array.prototype.join.call(arguments, ',');
+};
+message.setNetTypes=function(){
+    this.dimension3=Array.prototype.join.call(arguments, ',');
     return this;
-}
-function setTags(){
-    message.dimension2=Array.prototype.join.call(arguments, ',');
+};
+message.setTags=function(){
+    this.dimension2=Array.prototype.join.call(arguments, ',');
     return this;
-}
-function setCountries(){
-    message.dimension1=Array.prototype.join.call(arguments, ',');
-}
-function setReceiveType(receiveType){
-    message.receive_type=receiveType;
+};
+message.setCountries=function(){
+    this.dimension1=Array.prototype.join.call(arguments, ',');
+};
+message.setReceiveType=function(receiveType){
+    this.receive_type=receiveType;
     return this;
-}
-function setPlatforms(){
-    message.platform=Array.prototype.join.call(arguments, ',');
+};
+message.setPlatforms=function(){
+    this.platform=Array.prototype.join.call(arguments, ',');
     return this;
-}
-exports.setMessageTitle=setMessageTitle;
-exports.setMessageContent=setMessageContent;
-exports.setMessageType=setMessageType;
-exports.setSendType=setSendType;
-exports.setMessageAction=setMessageAction;
-exports.setActionParam=setActionParam;
-exports.setSendTime=setSendTime;
-exports.setRemandTime=setRemandTime;
-exports.setMessageStyle=setMessageStyle;
-exports.setMessageUrl=setMessageUrl;
-exports.setWarmType=setWarmType;
-exports.setReceiveType=setReceiveType;
-exports.setTokens=setTokens;
-exports.setCountries=setCountries;
-exports.setTags=setTags;
-exports.setNetTypes=setNetTypes;
-exports.setPlatforms=setPlatforms;
-exports.setChannels=setChannels;
-exports.setVersions=setVersions;
-exports.message=message;
+};
+
+module.exports=message;
 
