@@ -65,32 +65,32 @@ message.setMessageUrl=function(messageUrl){
     this.message_url=messageUrl;
     return this;
 };
-message.setWarmType=function(){
-    this.warm_type=Array.prototype.join.call(arguments, ',');
+message.setWarmType=function(warmTypes){
+    this.warm_type=warmTypes.join(',');
     return this;
 };
-message.setTokens=function(){
-    this.token_list=Array.prototype.join.call(arguments, ',');
+message.setTokens=function(tokens){
+    this.token_list=tokens.join(',');
     return this;
 };
-message.setVersions=function(){
-    this.dimension5=Array.prototype.join.call(arguments, ',');
+message.setVersions=function(versions){
+    this.dimension5=versions.join(',');
     return this;
 };
-message.setChannels=function(){
-    this.dimension4=Array.prototype.join.call(arguments, ',');
+message.setChannels=function(channels){
+    this.dimension4=channels.join.(',');
     return this;
 };
-message.setNetTypes=function(){
-    this.dimension3=Array.prototype.join.call(arguments, ',');
+message.setNetTypes=function(netTypes){
+    this.dimension3=netTypes.join(',');
     return this;
 };
-message.setTags=function(){
-    this.dimension2=Array.prototype.join.call(arguments, ',');
+message.setTags=function(tags){
+    this.dimension2=tags.join(',');
     return this;
 };
-message.setCountries=function(){
-    this.dimension1=Array.prototype.join.call(arguments, ',');
+message.setCountries=function(countries){
+    this.dimension1=countries.join(',');
 };
 message.setReceiveType=function(receiveType){
     this.receive_type=receiveType;
