@@ -2,7 +2,7 @@
  * Created by luzhen on 14-9-23.
  */
 var MessageError = require('./MessageError');
-var Request = require('request');
+var request = require('request');
 var MESSAGE_API_URL = 'http://www.wecloud.io/push/api.do!v1';
 var DEFAULT_MAX_RETRY_TIMES = 3;
 var READ_TIMEOUT = 30 * 1000;
@@ -10,10 +10,10 @@ var READ_TIMEOUT = 30 * 1000;
 var WECLOUD_APPKEY_PATTERNS = /^[a-zA-Z0-9]{24}/;
 var WECLOUD_MASTER_SECRET_PATTERNS = /^[a-zA-Z0-9]{32}/;
 
-exports.instance = function(option) {
-    return new MessageClient(option.appkey, option.masterSecret, option.retryTimes);
-};
-function MessageClient(appkey, masterSecret, retryTimes) {
+function MessageClient(option) {
+    var appkey=option.appkey;
+    var masterSecret=option.masterSecret;
+    var retryTimes=option.retryTimes;
     if (!appkey || !masterSecret) {
         throw MessageError
             .InvalidArgumentError('appKey and masterSecret are both required.');
@@ -106,8 +106,8 @@ function MessageClient(appkey, masterSecret, retryTimes) {
             }
         };
 
-        if (method == 'POST' || method == 'post') {
-            Request.post({
+        if (method.toUpperCase() == 'POST') {
+            request.post({
                 url : url,
                 body : body,
                 headers : headers,
@@ -116,3 +116,5 @@ function MessageClient(appkey, masterSecret, retryTimes) {
         }
     }
 }
+
+module.exports=MessageClient;

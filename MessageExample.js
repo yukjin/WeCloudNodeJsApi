@@ -11,7 +11,7 @@ var tags=MESSAGE_ENUM.tags;//标签枚举
 var netTypes=MESSAGE_ENUM.netTypes;//网络类型枚举
 var platforms=MESSAGE_ENUM.platforms;
 var message=require('./Message');//引入消息模块
-var client =MessageClient.instance({appkey:'DXZBSF7IOC6ACKOZCOT8R9IJ', masterSecret:'ZKUIVPP71E51Z0Y6HLSHO9T15MS504AC'});//获得一个MessageClient对象
+var client =new MessageClient({appkey:'DXZBSF7IOC6ACKOZCOT8R9IJ', masterSecret:'ZKUIVPP71E51Z0Y6HLSHO9T15MS504AC'});//获得一个MessageClient对象
 message
     .setMessageType(messageType.NOTIFICATION)
     .setMessageTitle('test title')
