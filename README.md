@@ -8,3 +8,6 @@ WeCloud消息推送的服务端API nodejs实现
 
 ##Install
 npm install wecloudmessage-api
+
+##详细介绍
+[api文档](http://www.wecloud.io/wecloudwiki/page/hy82kthkpk8u0hvu3tw8r94z)
