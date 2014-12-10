@@ -1,7 +1,7 @@
 /**
  * Created by luzhen on 14-9-24.
  */
-
+var MessageError=require('./MessageError');
 var message={
     'message_type':'2',
     'message_title':'',
@@ -66,38 +66,72 @@ message.setMessageUrl=function(messageUrl){
     return this;
 };
 message.setWarmType=function(warmTypes){
-    this.warm_type=warmTypes.join(',');
+    if(warmTypes['join']){
+        this.warm_type=warmTypes.join(',');
+    }else{
+        throw MessageError.InvalidArgumentError('param type is incorrect in warmType');
+    }
     return this;
 };
 message.setTokens=function(tokens){
-    this.token_list=tokens.join(',');
+    if(tokens['join']){
+        this.token_list=tokens.join(',');
+    }else{
+        throw MessageError.InvalidArgumentError('param type is incorrect in tokens');
+    }
     return this;
 };
 message.setVersions=function(versions){
-    this.dimension5=versions.join(',');
+    if(versions['join']){
+        this.dimension5=versions.join(',');
+    }else{
+        throw MessageError.InvalidArgumentError('param type is incorrect in versions');
+    }
     return this;
 };
 message.setChannels=function(channels){
-    this.dimension4=channels.join.(',');
+    if(channels['join']){
+        this.dimension4=channels.join(',');
+    }else{
+        throw MessageError.InvalidArgumentError('param type is incorrect in channels');
+    }
     return this;
 };
+
 message.setNetTypes=function(netTypes){
-    this.dimension3=netTypes.join(',');
+    if(netTypes['join']){
+        this.dimension3=netTypes.join(',');
+    }else{
+        throw MessageError.InvalidArgumentError('param type is incorrect in netTypes');
+    }
     return this;
 };
 message.setTags=function(tags){
-    this.dimension2=tags.join(',');
+    if(tags['join']){
+        this.dimension2=tags.join(',');
+    }else{
+        throw MessageError.InvalidArgumentError('param type is incorrect in tags');
+    }
     return this;
 };
 message.setCountries=function(countries){
-    this.dimension1=countries.join(',');
+    if(countries['join']){
+        this.dimension1=countries.join(',');
+    }else{
+        throw MessageError.InvalidArgumentError('param type is incorrect in countries');
+    }
+    return this;
 };
 message.setReceiveType=function(receiveType){
     this.receive_type=receiveType;
     return this;
 };
-message.setPlatforms=function(){
-    this.platform=Array.prototype.join.call(arguments, ',');
+message.setPlatforms=function(platforms){
+    if(platforms['join']){
+        this.platform=platforms.join(',');
+    }else{
+        throw MessageError.InvalidArgumentError('param type is incorrect in platforms');
+    }
     return this;
 };
 
