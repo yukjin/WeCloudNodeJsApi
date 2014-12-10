@@ -1,14 +1,15 @@
 {
   "author": "luzhen <luzhen@sungymobile.com> (luzhen.sinaapp.com)",
-  "name": "wecloudMessageApi",
-  "description": "wecloudMessageApi SDK",
-  "version": "0.0.1",
+  "name": "wecloudmessage-api",
+  "description": "wecloudmessage-api SDK",
+  "version": "0.0.2",
   "repository": {
-    "url": ""
+    "url": "https://github.com/yukjin/WeCloudNodeJsApi.git"
   },
   "dependencies": {
     "request": "^2.47.0"
   },
+  "main":"index.js",
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
