@@ -15,20 +15,18 @@ function MessageClient(option) {
     var masterSecret=option.masterSecret;
     var retryTimes=option.retryTimes;
     if (!appkey || !masterSecret) {
-        throw MessageError
-            .InvalidArgumentError('appKey and masterSecret are both required.');
+        throw new MessageError.InvalidArgumentError('appKey and masterSecret are both required.');
     }
 
     if (typeof appkey !== 'string' || typeof masterSecret !== 'string'
         || !WECLOUD_APPKEY_PATTERNS.test(appkey) || !WECLOUD_MASTER_SECRET_PATTERNS.test(masterSecret)) {
-        throw new MessageError.InvalidArgumentError(
-                'appkey and masterSecret format is incorrect. ');
+        throw new MessageError.InvalidArgumentError('appkey and masterSecret format is incorrect. ');
     }
     this.appkey = appkey;
     this.masterSecret = masterSecret;
     if (retryTimes) {
         if (typeof retryTimes != 'number') {
-            throw MessageError.InvalidArgumentError("Invalid retryTimes.");
+            throw new MessageError.InvalidArgumentError("Invalid retryTimes.");
         }
         this.retryTimes = retryTimes;
     } else {
@@ -65,13 +63,14 @@ function MessageClient(option) {
 
     _request=function(url, body, headers, auth, method, times, maxTryTimes,
                                     callback) {
-        console.log("Push URL :" + url);
-        if (body)
-            console.log("Body :" + body);
-        console.log("Headers :" + JSON.stringify(headers));
-        console.log("Method :" + method);
-        console.log("Times/MaxTryTimes : " + times + "/" + maxTryTimes);
-
+        if(process.env.debug==1){
+            console.log("Push URL :" + url);
+            if (body)
+                console.log("Body :" + body);
+            console.log("Headers :" + JSON.stringify(headers));
+            console.log("Method :" + method);
+            console.log("Times/MaxTryTimes : " + times + "/" + maxTryTimes);
+        }
         var _callback = function(err, res, body) {
             if (err) {
                 if (err.code == 'ETIMEDOUT' && err.syscall != 'connect') {
@@ -81,7 +80,7 @@ function MessageClient(option) {
                         true));
                 } else if (err.code == 'ENOTFOUND') {
                     // unknown host
-                    return callback(new MessageError.APIConnectionError('Known host : '
+                    return callback(new MessageError.APIConnectionError('Unknown host : '
                         + url));
                 }
                 // other connection error
