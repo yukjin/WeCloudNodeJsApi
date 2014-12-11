@@ -4,10 +4,9 @@
 exports.APIConnectionError = APIConnectionError;
 exports.APIRequestError = APIRequestError;
 exports.InvalidArgumentError = InvalidArgumentError;
-
+var util=require('util');
 
 function APIConnectionError(message, isResponseTimeout) {
-    Error.call(this, message);
     this.name = "APIConnectionError";
     this.message = message;
     this.isResponseTimeout = isResponseTimeout || false;
@@ -15,17 +14,17 @@ function APIConnectionError(message, isResponseTimeout) {
 
 function APIRequestError(httpCode, response) {
     var message = "Push Fail, HttpStatusCode: " + httpCode + " result: " + response.toString();
-    Error.call(this, message);
     this.name = "APIRequestError";
     this.message = message;
     this.httpCode = httpCode;
     this.response = response;
-
 }
 
-
 function InvalidArgumentError(message) {
-    Error.call(this, message);
     this.name = "InvalidArgumentError";
     this.message = message;
 }
+
+util.inherits(APIConnectionError,Error);
+util.inherits(APIRequestError,Error);
+util.inherits(InvalidArgumentError,Error);
