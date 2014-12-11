@@ -22,7 +22,7 @@ var message={
     'dimension3':'',
     'dimension4':'',
     'dimension5':'',
-    'platform':''
+    'platform':'1'//默认android
 };
 message.setMessageTitle=function(title){
     this.message_title=title;
@@ -68,8 +68,6 @@ message.setMessageUrl=function(messageUrl){
 message.setWarmType=function(warmTypes){
     if(warmTypes['join']){
         this.warm_type=warmTypes.join(',');
-    }else{
-        throw MessageError.InvalidArgumentError('param type is incorrect in warmType');
     }
     return this;
 };
@@ -77,7 +75,7 @@ message.setTokens=function(tokens){
     if(tokens['join']){
         this.token_list=tokens.join(',');
     }else{
-        throw MessageError.InvalidArgumentError('param type is incorrect in tokens');
+        throw new MessageError.InvalidArgumentError('param type should be array in tokens');
     }
     return this;
 };
@@ -85,7 +83,7 @@ message.setVersions=function(versions){
     if(versions['join']){
         this.dimension5=versions.join(',');
     }else{
-        throw MessageError.InvalidArgumentError('param type is incorrect in versions');
+        throw new MessageError.InvalidArgumentError('param type should be array in versions');
     }
     return this;
 };
@@ -93,7 +91,7 @@ message.setChannels=function(channels){
     if(channels['join']){
         this.dimension4=channels.join(',');
     }else{
-        throw MessageError.InvalidArgumentError('param type is incorrect in channels');
+        throw new MessageError.InvalidArgumentError('param type should be array in channels');
     }
     return this;
 };
@@ -102,7 +100,7 @@ message.setNetTypes=function(netTypes){
     if(netTypes['join']){
         this.dimension3=netTypes.join(',');
     }else{
-        throw MessageError.InvalidArgumentError('param type is incorrect in netTypes');
+        throw new MessageError.InvalidArgumentError('param type should be array in netTypes');
     }
     return this;
 };
@@ -110,7 +108,7 @@ message.setTags=function(tags){
     if(tags['join']){
         this.dimension2=tags.join(',');
     }else{
-        throw MessageError.InvalidArgumentError('param type is incorrect in tags');
+        throw new MessageError.InvalidArgumentError('param type should be array in tags');
     }
     return this;
 };
@@ -118,7 +116,7 @@ message.setCountries=function(countries){
     if(countries['join']){
         this.dimension1=countries.join(',');
     }else{
-        throw MessageError.InvalidArgumentError('param type is incorrect in countries');
+        throw new MessageError.InvalidArgumentError('param type should be array in countries');
     }
     return this;
 };
@@ -129,8 +127,6 @@ message.setReceiveType=function(receiveType){
 message.setPlatforms=function(platforms){
     if(platforms['join']){
         this.platform=platforms.join(',');
-    }else{
-        throw MessageError.InvalidArgumentError('param type is incorrect in platforms');
     }
     return this;
 };
